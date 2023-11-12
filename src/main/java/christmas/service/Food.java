@@ -1,4 +1,6 @@
 package christmas.service;
 
-public class Food {
+public interface Food {
+	String menuName = "Food";
+	void menu();
 }
