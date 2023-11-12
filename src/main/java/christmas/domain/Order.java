@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Order implements Food, Drink {
+public class Order {
 	private String menuName;
 	private Map<String, Integer> orders = new HashMap<String, Integer>();
 
@@ -22,18 +22,22 @@ public class Order implements Food, Drink {
 			}
 	}
 
-	public String printOrder(){
+	public String getOrders(){
 		Set<String> menus = orders.keySet();
-		String orderLine = "";
+		StringBuilder orderLine = new StringBuilder();
 		for (String menu : menus) {
-			System.out.println(menu + " " + orders.get(menu) + "개");
-			orderLine = orderLine + menu + " " + orders.get(menu) + "개\n";
+			orderLine.append(menu).append(" ").append(orders.get(menu)).append("개\n");
 		}
-		return orderLine;
+		return orderLine.toString();
 	}
 
-	public void menu() {
-		System.out.println("메뉴 이름: " + menuName);
+	public int getTotalPrice(Map<String, Integer> menuPrice) {
+		int totalPrice = 0;
+		Set<String> menus = orders.keySet();
+		for (String menu : menus) {
+			totalPrice += menuPrice.get(menu) * orders.get(menu);
+		}
+		return totalPrice;
 	}
 
 }

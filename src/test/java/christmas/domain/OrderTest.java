@@ -12,6 +12,6 @@ class OrderTest {
 	void 문자열_구분하는_기능()  {
 		Order order = new Order("chicken-1,coke-2");
 		order.splitOrders();
-		assertThat(order.printOrder()).isEqualTo("chicken 1개\ncoke 2개\n");
+		assertThat(order.getOrders()).isEqualTo("chicken 1개\ncoke 2개\n");
 	}
 }

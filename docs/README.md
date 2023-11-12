@@ -4,9 +4,12 @@
 
 - [ ] 메뉴를 입력받는 기능 - createOrder
 - [x] 메뉴를 분리하는 기능 - splitOrder
-- [ ] 누적금액을 계산하는 기능 - calculateTotalAmount
+- [x] 총금액을 계산하는 기능 - calculateTotalAmount
+- [x] 메뉴를 출력하는 기능 - printOrder
+
+### 고객
 - [ ] 고객 등급을 계산하는 기능 - calculateGrade
-- [ ] 메뉴를 출력하는 기능 - printOrder
+
 
 ### 인터페이스
 

@@ -9,6 +9,5 @@ public class Application {
         // TODO: 프로그램 구현
         Order order = new Order("chicken-1,coke-2");
         order.splitOrders();
-        order.printOrder();
     }
 }
