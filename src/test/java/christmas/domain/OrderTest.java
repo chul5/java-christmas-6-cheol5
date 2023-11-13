@@ -14,4 +14,9 @@ class OrderTest {
 		order.splitOrders();
 		assertThat(order.getOrders()).isEqualTo("chicken 1개\ncoke 2개\n");
 	}
+
+	@Test
+	void 총금액을_계산하는_기능(){
+
+	}
 }
