@@ -2,6 +2,8 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Map;
+
 import static christmas.ErrorMessage.*;
 public class InputView {
 	private String line;
@@ -35,7 +37,7 @@ public class InputView {
 		}
 		return true;
 	}
-	private boolean validateOrders(String line) {
+	private boolean validateOrders(String line, Map<String, Integer> menuPrice) {
 		try{
 			if (line.isEmpty())
 				throw new IllegalStateException(EMPTY.getMessage());
@@ -48,6 +50,7 @@ public class InputView {
 				Integer.parseInt(order[1]);
 			}
 		} catch (IllegalArgumentException | IllegalStateException e) {
+			System.out.println(NOT_EXIST_ORDER.getMessage() + e.getMessage());
 			return false;
 		}
 		return true;
