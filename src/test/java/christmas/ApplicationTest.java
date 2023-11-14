@@ -41,6 +41,8 @@ class ApplicationTest extends NsTest {
         });
     }
 
+
+
     @Test
     void 주문_예외_테스트() {
         assertSimpleTest(() -> {

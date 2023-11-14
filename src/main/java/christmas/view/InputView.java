@@ -2,8 +2,7 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static christmas.ErrorMessage.NOT_NUMBER;
-
+import static christmas.ErrorMessage.*;
 public class InputView {
 	private String line;
 
@@ -11,7 +10,6 @@ public class InputView {
 		System.out.println("방문 날짜를 입력해 주세요.");
 		line = Console.readLine();
 		while (!validateDate(line)) {
-			System.out.println("방문 날짜를 다시 입력해 주세요.");
 			line = Console.readLine();
 		}
 		return Integer.parseInt(line);
@@ -21,7 +19,6 @@ public class InputView {
 		System.out.println("메뉴를 입력해 주세요.");
 		line = Console.readLine();
 		while (!validateOrders(line)) {
-			System.out.println("메뉴를 다시 입력해 주세요.");
 			line = Console.readLine();
 		}
 		return line;
@@ -31,15 +28,17 @@ public class InputView {
 		try {
 			int date = Integer.parseInt(line);
 			if(date < 1 || date > 31)
-				throw new IllegalArgumentException(NOT_NUMBER.getMessage());
-		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException(NOT_NUMBER.getMessage();
+				throw new IllegalArgumentException(RANGE.getMessage());
+		} catch (IllegalArgumentException | IllegalStateException e) {
+			System.out.println(NOT_EXIST_DATE.getMessage() + e.getMessage());
 			return false;
 		}
 		return true;
 	}
 	private boolean validateOrders(String line) {
 		try{
+			if (line.isEmpty())
+				throw new IllegalStateException(EMPTY.getMessage());
 			String[] menus = line.split(",");
 			for(String menu : menus) {
 				String[] order = menu.split("-");
@@ -48,7 +47,7 @@ public class InputView {
 				}
 				Integer.parseInt(order[1]);
 			}
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException | IllegalStateException e) {
 			return false;
 		}
 		return true;
