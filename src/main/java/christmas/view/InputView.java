@@ -17,10 +17,10 @@ public class InputView {
 		return Integer.parseInt(line);
 	}
 
-	public String getOrders() {
+	public String getOrders(Map<String, Integer> menuPrice) {
 		System.out.println("메뉴를 입력해 주세요.");
 		line = Console.readLine();
-		while (!validateOrders(line)) {
+		while (!validateOrders(line, menuPrice)) {
 			line = Console.readLine();
 		}
 		return line;
@@ -44,9 +44,8 @@ public class InputView {
 			String[] menus = line.split(",");
 			for(String menu : menus) {
 				String[] order = menu.split("-");
-				if(order.length != 2) {
-					return false;
-				}
+				if(!menuPrice.containsKey(order[0]))
+					throw new IllegalArgumentException(NOT_EXIST_MENU.getMessage());
 				Integer.parseInt(order[1]);
 			}
 		} catch (IllegalArgumentException | IllegalStateException e) {

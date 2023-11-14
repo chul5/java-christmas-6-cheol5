@@ -7,6 +7,9 @@
 - [x] 총금액을 계산하는 기능 - calculateTotalAmount
 - [x] 메뉴를 출력하는 기능 - printOrder
 
+### 메뉴 - Menu
+- [ ] 메뉴를 생성하는 기능 - menuInit
+
 ### 고객
 - [ ] 고객 등급을 계산하는 기능 - calculateGrade
 
