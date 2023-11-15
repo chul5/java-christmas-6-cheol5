@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class ChristmasContoller {
 	private Map<String, Integer> menuPrice;
+	private Map<String, Integer> drinkMenuPrice;
 	private int date;
 	private Order order;
 	private final String appetizer = "양송이수프(6000), 타파스(5500), 시저샐러드(8000)";
@@ -25,10 +26,19 @@ public class ChristmasContoller {
 		return menuPrice;
 	}
 
-	public void run() {
-		menuPrice = getMenuPrice();
-		date = InputView.getDate();
-		order = new Order(InputView.getOrders(menuPrice));
+	public Map<String, Integer> getDrinks(){
+		Map<String, Integer> drinkMenuPrice = new HashMap<>();
+		String[] menus = drink.split(",");
+		for(String menu : menus) {
+			String[] order = menu.trim().split("\\(");
+			menuPrice.put(order[0], Integer.parseInt(order[1].replace(")", "")));
+		}
+		return drinkMenuPrice;
+	}
 
+	public void run() {
+		date = InputView.getDate();
+		InputView inputView = new InputView(getMenuPrice(), getDrinks());
+		order = new Order(InputView.getOrders());
 	}
 }

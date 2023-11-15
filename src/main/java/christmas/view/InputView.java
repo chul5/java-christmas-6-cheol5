@@ -7,8 +7,17 @@ import java.util.List;
 import java.util.Map;
 
 import static christmas.ErrorMessage.*;
+
 public class InputView {
 	private static String line;
+	private static Map<String, Integer> drinks;
+	private static Map<String, Integer> menuPrice;
+
+	InputView(Map<String, Integer> menuPrice, Map<String, Integer> drinks) {
+		this.drinks = drinks;
+		this.menuPrice = menuPrice;
+	}
+
 	public static int getDate() {
 		System.out.println("방문 날짜를 입력해 주세요.");
 		line = Console.readLine();
@@ -18,10 +27,10 @@ public class InputView {
 		return Integer.parseInt(line);
 	}
 
-	public static String getOrders(Map<String, Integer> menuPrice) {
+	public static String getOrders() {
 		System.out.println("메뉴를 입력해 주세요.");
 		line = Console.readLine().trim();
-		while (!validateOrders(line, menuPrice)) {
+		while (!validateOrders(line)) {
 			line = Console.readLine();
 		}
 		return line;
@@ -39,9 +48,9 @@ public class InputView {
 		return true;
 	}
 
-	private static boolean validateOrders(String line, Map<String, Integer> menuPrice) {
+	private static boolean validateOrders(String line) {
 		try {
-			checkErrors(line, menuPrice);
+			checkErrors(line);
 		} catch (IllegalArgumentException | IllegalStateException e) {
 			System.out.println(NOT_EXIST_ORDER.getMessage() + e.getMessage());
 			return false;
@@ -49,21 +58,31 @@ public class InputView {
 		return true;
 	}
 
-	private static void checkErrors(String line, Map<String, Integer> menuPrice) {
+	private static void checkErrors(String line) {
 		if (line.isEmpty())
 			throw new IllegalStateException(EMPTY.getMessage());
 		String[] menus = line.split(",");
 		List<String> menuList = new ArrayList<>();
 		for (String menu : menus) {
-			String[] order = menu.split("-");
-			if (menuList.contains(order[0]))
+			String[] order = menu.trim().split("-");
+			if (menuList.contains(order[0].trim()))
 				throw new IllegalArgumentException(DUPLICATE.getMessage());
-			if (!menuPrice.containsKey(order[0]))
+			if (!menuPrice.containsKey(order[0].trim()))
 				throw new IllegalArgumentException(NOT_EXIST_MENU.getMessage());
-			menuList.add(order[0]);
+			menuList.add(order[0].trim());
 			int menuCount = Integer.parseInt(order[1]);
 			if (menuCount < 1 | menuCount > 20)
 				throw new IllegalArgumentException(RANGE.getMessage());
 		}
+		if (isDrinkOnly(menuList))
+			throw new IllegalArgumentException(DRINK_ONLY.getMessage());
+	}
+
+	private static boolean isDrinkOnly(List<String> menuList) {
+		for (String menu : menuList) {
+			if (!drinks.containsKey(menu))
+				return false;
+		}
+		return true;
 	}
 }

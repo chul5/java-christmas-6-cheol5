@@ -19,8 +19,8 @@ class InputViewTest extends NsTest {
 
 	@BeforeEach
 	void setUp() {
-		inputView = new InputView();
 		christmasContoller = new ChristmasContoller();
+		inputView = new InputView(christmasContoller.getMenuPrice(), christmasContoller.getDrinks());
 	}
 
 	@ParameterizedTest
