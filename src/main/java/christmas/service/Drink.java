@@ -1,6 +1,7 @@
 package christmas.service;
 
+import java.util.Map;
+
 public interface Drink {
-	String menuName = "Drink";
-	void menu();
+	static final String drink = "제로콜라(3000), 레드와인(60000), 샴페인(25000)";
 }

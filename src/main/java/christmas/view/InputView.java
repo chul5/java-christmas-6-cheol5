@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import static christmas.ErrorMessage.*;
+import static christmas.view.OutputView.*;
 
 public class InputView {
 	private static String line;
@@ -19,7 +20,7 @@ public class InputView {
 	}
 
 	public int getDate() {
-		System.out.println("방문 날짜를 입력해 주세요.");
+		OutputView.printMessage(START_MESSAGE);
 		line = Console.readLine();
 		while (!validateDate(line)) {
 			line = Console.readLine().trim();
@@ -28,7 +29,7 @@ public class InputView {
 	}
 
 	public String getOrders() {
-		System.out.println("메뉴를 입력해 주세요.");
+		OutputView.printMessage(ORDER_MESSAGE);
 		line = Console.readLine().trim();
 		while (!validateOrders(line)) {
 			line = Console.readLine();

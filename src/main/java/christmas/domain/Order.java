@@ -8,21 +8,27 @@ import java.util.Map;
 import java.util.Set;
 
 public class Order {
-	private String menuName;
-	private Map<String, Integer> orders = new HashMap<String, Integer>();
+	private final String menuName;
+	private final Map<String, Integer> orders = new HashMap<String, Integer>();
 
 	public Order(String menuName) {
 		this.menuName = menuName;
-	}
-	public void splitOrders(){
-		String[] menus = menuName.split(",");
-		for(String menu : menus) {
-			String[] order = menu.split("-");
-			orders.put(order[0], Integer.parseInt(order[1]));
-			}
+		splitOrders();
 	}
 
-	public String getOrders(){
+	public void splitOrders() {
+		String[] menus = menuName.split(",");
+		for (String menu : menus) {
+			String[] order = menu.split("-");
+			orders.put(order[0], Integer.parseInt(order[1]));
+		}
+	}
+
+	public Map<String, Integer> getOrders() {
+		return orders;
+	}
+
+	public String getOrdersString() {
 		Set<String> menus = orders.keySet();
 		StringBuilder orderLine = new StringBuilder();
 		for (String menu : menus) {
@@ -39,5 +45,4 @@ public class Order {
 		}
 		return totalPrice;
 	}
-
 }

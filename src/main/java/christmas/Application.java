@@ -1,15 +1,11 @@
 package christmas;
 
-import christmas.controller.ChristmasContoller;
-import christmas.domain.Order;
-import christmas.view.InputView;
-
-import java.util.Map;
+import christmas.controller.ChristmasController;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        ChristmasContoller christmasContoller = new ChristmasContoller();
+        ChristmasController christmasContoller = new ChristmasController();
         christmasContoller.run();
     }
 }
