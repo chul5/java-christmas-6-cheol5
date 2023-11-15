@@ -2,7 +2,7 @@
 
 ### 주문메뉴 - Order
 
-- [ ] 메뉴를 입력받는 기능 - createOrder
+- [x] 메뉴를 입력받는 기능 - createOrder
 - [x] 메뉴를 분리하는 기능 - splitOrder
 - [x] 총금액을 계산하는 기능 - calculateTotalAmount
 - [x] 메뉴를 출력하는 기능 - printOrder
@@ -11,20 +11,20 @@
 - [x] 메뉴를 생성하는 기능 - menuInit
 
 ### 할인정책 -Discount
-- [ ] 할인 정책 생성하는 기능
+- [x] 할인 정책 생성하는 기능
 
 ### 고객
 - [x] 고객 등급을 계산하는 기능 - calculateGrade
 
 ### 숫자
-- [ ] enum을 이용한 숫자 구현 -service.Number
+- [x] enum을 이용한 숫자 구현 -service.Number
 
 ### 인터페이스
 
-- [ ] 음식 인터페이스 구현
-- [ ] 음료 인터페이스 구현
-- [ ] 할인 인터페이스 구현
-  - [ ] 할인 정책 구현
+- [x] 음식 인터페이스 구현
+- [x] 음료 인터페이스 구현
+- [x] 메인디쉬 인터페이스 구현
+- [x] 에피타이저 인터페이스 구현
 
 ### 에러
 
