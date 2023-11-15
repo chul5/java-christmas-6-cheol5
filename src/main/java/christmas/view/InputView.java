@@ -10,15 +10,15 @@ import static christmas.ErrorMessage.*;
 
 public class InputView {
 	private static String line;
-	private static Map<String, Integer> drinks;
-	private static Map<String, Integer> menuPrice;
+	private final Map<String, Integer> drinks;
+	private final Map<String, Integer> menuPrice;
 
-	InputView(Map<String, Integer> menuPrice, Map<String, Integer> drinks) {
+	public InputView(Map<String, Integer> menuPrice, Map<String, Integer> drinks) {
 		this.drinks = drinks;
 		this.menuPrice = menuPrice;
 	}
 
-	public static int getDate() {
+	public int getDate() {
 		System.out.println("방문 날짜를 입력해 주세요.");
 		line = Console.readLine();
 		while (!validateDate(line)) {
@@ -27,7 +27,7 @@ public class InputView {
 		return Integer.parseInt(line);
 	}
 
-	public static String getOrders() {
+	public String getOrders() {
 		System.out.println("메뉴를 입력해 주세요.");
 		line = Console.readLine().trim();
 		while (!validateOrders(line)) {
@@ -36,7 +36,7 @@ public class InputView {
 		return line;
 	}
 
-	private static boolean validateDate(String line) {
+	private boolean validateDate(String line) {
 		try {
 			int date = Integer.parseInt(line);
 			if (date < 1 || date > 31)
@@ -48,7 +48,7 @@ public class InputView {
 		return true;
 	}
 
-	private static boolean validateOrders(String line) {
+	private boolean validateOrders(String line) {
 		try {
 			checkErrors(line);
 		} catch (IllegalArgumentException | IllegalStateException e) {
@@ -58,7 +58,7 @@ public class InputView {
 		return true;
 	}
 
-	private static void checkErrors(String line) {
+	private void checkErrors(String line) {
 		if (line.isEmpty())
 			throw new IllegalStateException(EMPTY.getMessage());
 		String[] menus = line.split(",");
@@ -78,7 +78,7 @@ public class InputView {
 			throw new IllegalArgumentException(DRINK_ONLY.getMessage());
 	}
 
-	private static boolean isDrinkOnly(List<String> menuList) {
+	private boolean isDrinkOnly(List<String> menuList) {
 		for (String menu : menuList) {
 			if (!drinks.containsKey(menu))
 				return false;

@@ -11,7 +11,7 @@
 - [x] 메뉴를 생성하는 기능 - menuInit
 
 ### 고객
-- [ ] 고객 등급을 계산하는 기능 - calculateGrade
+- [x] 고객 등급을 계산하는 기능 - calculateGrade
 
 ### 숫자
 - [ ] enum을 이용한 숫자 구현 -service.Number
