@@ -34,7 +34,7 @@ class InputViewTest extends NsTest {
 
 	@ParameterizedTest
 	@CsvSource({"1, ,[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.", "1,,[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.",
-			"1,티본,[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.", "1,시저-1,[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."})
+			"1,티본스테이크-21,[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.", "1,시저샐러드-0,[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."})
 	void 주문입력에러체크(String input1, String input2, String expected) {
 		assertSimpleTest(() -> {
 			runException(input1, input2);
