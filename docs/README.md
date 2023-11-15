@@ -10,6 +10,9 @@
 ### 메뉴 - Menu
 - [x] 메뉴를 생성하는 기능 - menuInit
 
+### 할인정책 -Discount
+- [ ] 할인 정책 생성하는 기능
+
 ### 고객
 - [x] 고객 등급을 계산하는 기능 - calculateGrade
 
